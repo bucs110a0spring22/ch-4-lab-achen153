@@ -11,39 +11,55 @@ import math
 def setupWindow(wn=None):
   wn.setworldcoordinates(-360, -1, 360, 1) 
 
-def setupAxis(dart=None):
+def setupAxis(dart=None, x_start=0, y_start=0, x_end=0, y_end=0):
   dart.up()
-  dart.goto(0,1)
+  dart.goto(x_start,y_start)
   dart.down()
-  dart.goto(0,-1)
-  dart.up()
-  dart.goto(-360,0)
-  dart.down()
-  dart.goto(360,0)
+  dart.goto(x_end, y_end)
+  dart.up
 
 def drawSineCurve(dart):
-    for i in range(-360,360):
+    dart.up()
+    for i in range(-360,361):
       y = math.sin(math.radians(i))
       dart.goto(i,y)
-      
-def drawCosineCurve(dart):
-  dart.up()
-  dart.color("blue")
-  dart.goto(-360,1)
-  dart.down()
-  for i in range(-360,360):
+      dart.down()
+  
+def drawCosineCurve(turt):
+  turt.up()
+  turt.color("blue")
+  turt.goto(-360,1)
+  turt.down()
+  for i in range(-360,361):
     y = math.cos(math.radians(i))
-    dart.goto(i,y)
+    turt.goto(i,y)
 
 def drawTangentCurve(dart):
   dart.up()
   dart.color("red")
   dart.goto(-360,-1)
   dart.down()
-  for i in range(-360,360):
+  for i in range(-360,361):
     y = math.tan(math.radians(i))
     dart.goto(i,y)
-    dart.up()
+
+def drawSineCurveChangeColor(dart):
+  SineCurveColor = str(input("Enter 'purple' if you'd like the sine curve to be red or 'green' if you want it to be green"))
+  dart.color(SineCurveColor)
+  drawSineCurve(dart)
+
+def drawCircle(dart, x_origin=0, y_origin=0, radius=0):
+  dart.up()
+  dart.goto(x_origin, y_origin-radius)
+  dart.down()
+  dart.circle(radius, steps=360)
+
+def ifCircleLeftRight(turt):
+  if turt.distance(0,0) > 1:
+    return "Your circle is on right side"
+  if turt.distance(0,0) <=1:
+    return "Your circle is on left side"
+
 
 ##########  Do Not Alter Any Code Past Here ########
 def main():
@@ -57,11 +73,18 @@ def main():
     
     #Part B
     setupWindow(wn)
-    setupAxis(dart)
+    setupAxis(dart, -360, 0, 360, 0)
+    setupAxis(dart, 0, -1, 0, 1)
     dart.speed(0)
     drawSineCurve(dart)
     drawCosineCurve(dart)
     drawTangentCurve(dart)
-    setupAxis(dart)
+    drawSineCurveChangeColor(dart)
+    wn.setworldcoordinates(-10, -10, 10, 10)
+    wn.clear()
+    setupAxis(dart, 0, -10, 0, 10)
+    setupAxis(dart, -10, 0, 10, 0)
+    drawCircle(dart, 3, 3, radius=3)
+    print(ifCircleLeftRight(dart))
     wn.exitonclick()
 main()

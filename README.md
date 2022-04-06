@@ -6,18 +6,19 @@
 ***
 
 ## SUMMARY:
- < Provide a short description of your program's functionality. No more than a couple sentences. >
+ This draws a sine, cos, and tangent graph.
+ What I did was I cleaned up the part where it draws the axis.  I added a function that chances the color of the sine curve.  I added a function that took parameters in order to draw a circle. I also added a function that returns whether or not the circle is on the left or right side!
 
 ## GRACE DAYS
-Grace days used for this assignment: < # >
+Grace days used for this assignment: < 1 >
 
-Grace days remaining: < # >/5
+Grace days remaining: < # 2/5
 
 ## KNOWN BUGS AND INCOMPLETE PARTS:
- < What parts of the project you were not able to complete >
+None
 
 ## REFERENCES:
- < List any outside resources used >
+None
 
 ## MISCELLANEOUS COMMENTS:
- < Anything you would like the grader to know >
+I hope my axis colors don't get my points off.
